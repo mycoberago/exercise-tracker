@@ -58,7 +58,6 @@ app.post('/api/users', async (req, res) => {
 })
 
 app.post('/api/users/:_id/exercises', async (req, res) => {
-  console.log(req.params);
   let _id = req.params._id;
   let description = req.body.description;
   let duration = parseInt(req.body.duration);
@@ -108,7 +107,6 @@ app.get('/api/users', async (req, res) => {
 app.get('/api/users/:_id/logs', async (req, res) => {
   let { _id } = req.params;
   let { query } = req;
-  console.log(query);
   let from, to;
   let limit = 0;
 
@@ -151,7 +149,6 @@ app.get('/api/users/:_id/logs', async (req, res) => {
         for(var i of result['log']) {
           i['date'] = new Date(i['date']).toDateString();
         }
-        console.log(result);
         return res.json(result);
       } //  IF DATA
       return res.json({ error: 'Unable to find user' });
@@ -195,7 +192,6 @@ if (from && to) {
       for(var i of result['log']) {
         i['date'] = new Date(i['date']).toDateString();
       }
-      console.log(result);
       return res.json(result);
     }
     return res.send("No data found");
@@ -230,7 +226,6 @@ if (limit > 0) {
       for(var i of result['log']) {
         i['date'] = new Date(i['date']).toDateString();
       }
-      console.log(result);
       return res.json(result);
     }
 
@@ -263,7 +258,6 @@ try {
     for(var i of result['log']) {
       i['date'] = new Date(i['date']).toDateString();
     }
-    console.log(result);
     return res.json(result);
   }
 
